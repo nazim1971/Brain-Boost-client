@@ -9,11 +9,8 @@ const Private = ({children}) => {
     const {user, loading} = useContext(AuthContext)
 
     if(loading){
-        return <div className="mx-auto">
-            <span className="loading loading-dots loading-xs"></span>
-<span className="loading loading-dots loading-sm"></span>
-<span className="loading loading-dots loading-md"></span>
-<span className="loading loading-dots loading-lg"></span>
+        return <div className="mx-auto h-screen flex justify-center items-center">
+            <img src="https://i.ibb.co/tpJx9kQ/Animation-1715360708115.gif" alt="" />
         </div>
     }
     

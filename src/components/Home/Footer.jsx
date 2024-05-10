@@ -18,7 +18,7 @@ const Footer = () => {
               
               
               <Typewriter
-        words={['Crafty', 'Carve', 'Crafty Carve']}
+        words={['Brain', 'Boost', 'Brain Boost']}
         loop={true}
         cursor
         cursorStyle='_'
@@ -45,7 +45,7 @@ const Footer = () => {
             </p>
             <p className="flex items-center gap-2">
               {" "}
-              <IoMdMailOpen className="text-green-500" /> support@CraftyCarve.com
+              <IoMdMailOpen className="text-green-500" /> support@Brainboost.com
             </p>
             <p className="flex items-center gap-2">
               {" "}
@@ -102,9 +102,9 @@ const Footer = () => {
         <div className="px-10 ">
           <hr className=" opacity-20 " />
           <p className="text-center text-sm text-white py-5">© 2024  <a>
-                Crafty
-                <span>
-                  Carv<a className="text-green-500 font-semibold ">e</a>
+                Brain
+                <span className="text-rose-500">
+                  -Boost
                 </span>
               </a> Reserved</p>
         </div>

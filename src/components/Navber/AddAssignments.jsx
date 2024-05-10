@@ -2,96 +2,99 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddAssignments = () => {
+  const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date());
+  const navigate = useNavigate();
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (data) => {
+    data.date = startDate;
+    data.ownerEmail = user?.email;
 
-    const {user} = useContext(AuthContext)
-    const [startDate, setStartDate] = useState(new Date());
+    // user cannot seleted previous date
+    if (startDate < new Date()) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please select a future date for the deadline!",
+      });
+      return;
+    }
 
-    const {
-        register,
-        handleSubmit,
-        reset
-      } = useForm()
-      const onSubmit = (data) => {
-        data.date = startDate
-        data.ownerEmail = user?.email
-        console.log(data);
-        reset()
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Your assignment has been posted",
-            showConfirmButton: false,
-            timer: 1500
-          });
-      }
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL}/allAssign`, data);
 
-    return (
-        <div>
-            <div>
+      console.log(data);
+      reset();
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your assignment has been posted",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/assignments");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+    <div>
+      <div>
         <section className="max-w-4xl p-6 mx-auto  rounded-md shadow-md bg-base-100">
           <h2 className="text-lg font-semibold t capitalize ">
             Post a Assignment
           </h2>
 
-          <form onSubmit={ handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <div>
-                <label >
-                  Assignment Title
-                </label>
+                <label>Assignment Title</label>
                 <input
                   id="assignmentTitle"
                   type="text"
-                  {...register("assignmentTitle" ,{ required: true })}
+                  {...register("assignmentTitle", { required: true })}
                   className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
               <div>
-                <label >
-                  Assignment Description
-                </label>
+                <label>Assignment Description</label>
                 <input
                   id="assignmentDescription"
                   type="text"
-                  {...register("assignmentDescription" ,{ required: true })}
+                  {...register("assignmentDescription", { required: true })}
                   className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
               <div>
-                <label >
-                  Assignment Mark
-                </label>
+                <label>Assignment Mark</label>
                 <input
                   id="assignmentMark"
                   type="number"
-                  {...register("assignmentMark" ,{ required: true })}
+                  {...register("assignmentMark", { required: true })}
                   className="block w-full px-4 py-2 mt-2  border border-rose-200 rounded-md   focus:border-rose-500 focus:ring-rose-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
               <div>
-                <label >
-                  Assignment  thumbnail 
-                </label>
+                <label>Assignment thumbnail</label>
                 <input
                   id="assignmentThumbnail"
                   type="text"
                   placeholder="Photo Url"
-                  {...register("assignmentThumbnail" ,{ required: true })}
+                  {...register("assignmentThumbnail", { required: true })}
                   className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
               <div>
-                <label
-                  
-                  htmlFor="level"
-                >
-                  Level
-                </label>
+                <label htmlFor="level">Level</label>
                 <select
-                  {...register("level" ,{ required: true })}
+                  {...register("level", { required: true })}
                   className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 >
                   <option value="Easy">Easy</option>
@@ -100,19 +103,16 @@ const AddAssignments = () => {
                 </select>
               </div>
 
-              <div>
-                <label className="text-gray-700 dark:text-gray-200">
-                  Deadline
-                </label>
+              <div className="flex flex-col">
+                <label>Deadline</label>
                 <label>
-                <ReactDatePicker
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                />
+                  <ReactDatePicker
+                    className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                  />
                 </label>
               </div>
-             
             </div>
 
             <div className="flex justify-end mt-6">
@@ -126,8 +126,8 @@ const AddAssignments = () => {
           </form>
         </section>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default AddAssignments;

@@ -11,6 +11,8 @@ import Error from "../components/Root/Error";
 import AddAssignments from "../components/Navber/AddAssignments";
 import PendingAssignments from "../components/Navber/PendingAssignments";
 import AttemptAssign from "../components/Navber/AttemptAssign";
+import UpdateAssignment from "../components/Home/UpdateAssignment";
+import ViewDetails from "../components/Assignment Details/ViewDetails";
 
 const routes = createBrowserRouter([
     {
@@ -40,7 +42,8 @@ const routes = createBrowserRouter([
        },
        {
         path: '/pendingAssignments',
-        element: <Private><PendingAssignments/></Private>
+        element: <Private><PendingAssignments/></Private>,
+        loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/pending`)
        },
        {
         path: '/editProfile',
@@ -54,7 +57,17 @@ const routes = createBrowserRouter([
        {
         path: '/viewPrivate',
         element: <Private><ViewPrivate/></Private>
-       }
+       },
+      {
+        path: '/updateAssignment/:id',
+        element: <UpdateAssignment/>,
+        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`)
+      },
+      {
+        path: '/viewDetails/:id',
+        element: <Private> <ViewDetails/> </Private>,
+        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`)
+      }
       ]
     },
   ]);

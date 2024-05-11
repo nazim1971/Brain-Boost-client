@@ -13,6 +13,7 @@ import PendingAssignments from "../components/Navber/PendingAssignments";
 import AttemptAssign from "../components/Navber/AttemptAssign";
 import UpdateAssignment from "../components/Home/UpdateAssignment";
 import ViewDetails from "../components/Assignment Details/ViewDetails";
+import GiveMark from "../components/Assignment Details/GiveMark";
 
 const routes = createBrowserRouter([
     {
@@ -44,6 +45,11 @@ const routes = createBrowserRouter([
         path: '/pendingAssignments',
         element: <Private><PendingAssignments/></Private>,
         loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/pending`)
+       },
+       {
+        path: '/giveMarks/:id',
+        element: <Private><GiveMark/></Private> ,
+        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/pending/${params.id}`)
        },
        {
         path: '/editProfile',

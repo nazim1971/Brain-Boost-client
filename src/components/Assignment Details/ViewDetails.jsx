@@ -39,7 +39,9 @@ const ViewDetails = () => {
       }
     };
 
-
+    const closeModal = () => {
+        document.getElementById('my_modal_1').close();
+    };
 
     return (
         <div>
@@ -57,9 +59,7 @@ const ViewDetails = () => {
 <dialog id="my_modal_1" className="modal">
   <div className="modal-box">
   <section className="max-w-4xl p-6 mx-auto  rounded-md  bg-base-100">
-          <h2 className="text-lg font-semibold t capitalize ">
-            Do a Assignment
-          </h2>
+          <button >Fill the assignment</button>
 
           <form  onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
@@ -90,7 +90,7 @@ const ViewDetails = () => {
             </div>
 
             <div className="flex justify-end mt-6">
-            <button  className="btn">cancel</button>
+            <button onClick={closeModal} className="btn">cancel</button>
               <button
                 type="submit"
                 className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"

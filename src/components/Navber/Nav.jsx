@@ -133,10 +133,10 @@ const Nav = () => {
                     </label>
                   </li>
                   <li>
-                    <Link to="/editProfile">Profile</Link>
+                    <NavLink to="/editProfile">Profile</NavLink>
                   </li>
                   <li>
-                    <Link to='/attemptAssignment'> Attempt assignment </Link>
+                    <NavLink to='/attemptAssignment'> Attempt assignment </NavLink>
                   </li>
                   <a className="lg:hidden">{menu}</a>
                   <li>{user && <a onClick={handleSignOut}>Logout</a>}</li>
@@ -153,7 +153,7 @@ const Nav = () => {
                 >
                   {user && (
                     <li>
-                      <a>Profile</a>
+                      <NavLink>Profile</NavLink>
                     </li>
                   )}
                   <li>

@@ -20,13 +20,16 @@ const AttemptAssign = () => {
 
     return (
         <div>
-            <div>
+            <div className="grid grid-cols-3 gap-5">
                 {
                     done.map(i=> <div key={i._id} className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
                       <h2 className="card-title"> Title {i.title} </h2>
-                      <p>Mark: {i.mark} </p>
+                      <p>Total Mark: {i.mark} </p>
                       <p>Status: {i.status} </p>
+                      {
+                        i.finalMark && <p>Your Mark {i.finalMark} </p>
+                      }
                       <div className="card-actions justify-end">
                         <button className="btn btn-primary">Buy Now</button>
                       </div>

@@ -31,8 +31,7 @@ const UpdateAssignment = () => {
 
     try {
          await axios.put(
-            `${import.meta.env.VITE_API_URL}/updatePost/${_id}`,
-            data
+            `${import.meta.env.VITE_API_URL}/updatePost/${_id}`, data
           );
 
       console.log(data);

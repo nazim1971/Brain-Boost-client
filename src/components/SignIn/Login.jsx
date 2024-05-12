@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
 
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
 
 
    
-  const { login ,googleLogin} = useContext(AuthContext);
+  const { login ,googleLogin, user , loading} = useContext(AuthContext);
   
   // show password
   const [pass, setPass] = useState(false);
@@ -28,9 +29,13 @@ const onSubmit = (data) => {
 
   // login user
   login(email, password)
-    .then(() => {
+    .then(async() => {
       toast.success("Login Successfully");
-     
+    //  jwt
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email }, { withCredentials: true });
+        console.log('token', res.data);
+
+
       navigate(location?.state ? location.state : "/");
     })
     .catch((err) => {
@@ -40,15 +45,25 @@ const onSubmit = (data) => {
     });
 }
 
-// google
-const handleGoogleLogin = () => {
-  googleLogin()
-    .then(() => {
-      toast.success("Login Successfully");
-      navigate(location?.state ? location.state : "/");
-    })
-    .catch();
+
+  // google
+  const handleGoogleLogin = async () => {
+    try {
+        const data = await googleLogin();
+        toast.success("Login Successfully");
+        console.log(data);
+        
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: data?.user?.email }, { withCredentials: true });
+        console.log('token', res.data);
+        
+        navigate(location?.state || "/");
+    } catch (error) {
+        // Handle errors
+        console.error(error);
+    }
 };
+
+  if( user || loading) return
 
 
     return (

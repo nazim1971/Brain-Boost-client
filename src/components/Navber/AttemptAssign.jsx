@@ -11,7 +11,7 @@ const AttemptAssign = () => {
         getData()
     },[user])
     const getData = async()=>{
-        const {data} = await axios(`${import.meta.env.VITE_API_URL}/getAssign/${user?.email}`)
+        const {data} = await axios(`${import.meta.env.VITE_API_URL}/getAssign/${user?.email}`, {withCredentials: true})
         setDone(data)
     }
 

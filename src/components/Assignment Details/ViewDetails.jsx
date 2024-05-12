@@ -22,7 +22,7 @@ const ViewDetails = () => {
       data.doneUserEmail = user?.email;
   
       try {
-        await axios.post(`${import.meta.env.VITE_API_URL}/doneAssign`, data);
+        await axios.post(`${import.meta.env.VITE_API_URL}/doneAssign`, data, {withCredentials: true});
   
         console.log(data);
         reset();
@@ -33,7 +33,7 @@ const ViewDetails = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/assignments");
+        navigate("/pendingAssignments");
       } catch (err) {
         console.log(err);
       }

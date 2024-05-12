@@ -4,3 +4,6 @@
 @tailwind utilities;
 
 
+[data-theme="light"] .DWT {
+    color: black;
+}

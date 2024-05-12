@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
 
 const Register = () => {
 
@@ -48,22 +49,32 @@ const Register = () => {
     return
   }
     
-    // create user
-    createUser(email,password)
+   // Create user and handle profile update
+createUser(email, password)
+.then(async() => {
+  toast.success("Account created successfully");
+  //  jwt
+  const res = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email }, { withCredentials: true });
+  console.log('token', res.data);
+  
+  // Update user profile
+  updateUserProfile(name, photo)
     .then(() => {
-        toast.success("Account create Successfully");
-        // create user profile
-        updateUserProfile(name, photo).then(() => {
-          navigate(location?.state ? location.state : "/");
-        });
-      }).catch((error) => {
-        if (error.code === "auth/email-already-in-use") {
-          toast.warning("This Email Already Used");
-        } else {
+      navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => {
+      console.error("Error updating user profile:", error);
+    });
+})
+.catch((error) => {
+  if (error.code === "auth/email-already-in-use") {
+    toast.warning("This email is already in use");
+  } else {
+    toast.error("An error occurred");
+    console.error("Error creating user:", error);
+  }
+});
 
-          toast.error("An error occurred");
-        }
-      });
 
 
   }

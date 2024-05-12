@@ -20,7 +20,7 @@ const GiveMark = () => {
           });
     }
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/pending/${_id}`, data);
+      await axios.put(`${import.meta.env.VITE_API_URL}/updatePending/${_id}`, data);
 
       console.log(data);
       reset();
@@ -41,8 +41,10 @@ const GiveMark = () => {
   return (
     <div className="gird grid-cols-2">
       <div>
-      <h1>Note: {assignmentNote} </h1>
-      <h1> Doc/PDF: {assignmentDoc} </h1>
+      <h1 className="p-5 w-1/2">Note: {assignmentNote} </h1>
+      {/* <h1> Doc/PDF: {assignmentDoc} </h1> */}
+      <iframe className="w-full md:w-[70%] mx-auto" src={assignmentDoc}  height="400"></iframe>
+
       <h1>Total Mark: {mark} </h1>
       </div>
 

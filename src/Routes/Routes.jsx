@@ -3,7 +3,6 @@ import Root from "../components/Root/Root";
 import Home from "../components/Home/Home";
 import Login from "../components/SignIn/Login";
 import Register from "../components/SignIn/Register";
-import ViewPrivate from "../components/Home/ViewPrivate";
 import Private from "../components/PrivateRoute/Private";
 import EditProfile from "../components/Navber/EditProfile";
 import Assignments from "../components/Navber/Assignments";
@@ -14,6 +13,7 @@ import AttemptAssign from "../components/Navber/AttemptAssign";
 import UpdateAssignment from "../components/Home/UpdateAssignment";
 import ViewDetails from "../components/Assignment Details/ViewDetails";
 import GiveMark from "../components/Assignment Details/GiveMark";
+import axios from "axios";
 
 const routes = createBrowserRouter([
     {
@@ -44,12 +44,22 @@ const routes = createBrowserRouter([
        {
         path: '/pendingAssignments',
         element: <Private><PendingAssignments/></Private>,
-        loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/pending`)
+        loader: ()=> axios.get(`${import.meta.env.VITE_API_URL}/pending`,{withCredentials: true})
+        .then(response => response.data)
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          throw error;
+        })
        },
        {
         path: '/giveMarks/:id',
         element: <Private><GiveMark/></Private> ,
-        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/pending/${params.id}`)
+        loader: ({params})=> axios.get(`${import.meta.env.VITE_API_URL}/pending/${params.id}`,{withCredentials: true})
+        .then(response => response.data)
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          throw error;
+        })
        },
        {
         path: '/editProfile',
@@ -60,10 +70,6 @@ const routes = createBrowserRouter([
         element: <Private> <AttemptAssign/> </Private>
        }
        ,
-       {
-        path: '/viewPrivate',
-        element: <Private><ViewPrivate/></Private>
-       },
       {
         path: '/updateAssignment/:id',
         element: <UpdateAssignment/>,
@@ -72,7 +78,12 @@ const routes = createBrowserRouter([
       {
         path: '/viewDetails/:id',
         element: <Private> <ViewDetails/> </Private>,
-        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`)
+        loader: ({params})=> axios.get(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`,{withCredentials: true})
+        .then(response => response.data)
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          throw error;
+        })
       }
       ]
     },

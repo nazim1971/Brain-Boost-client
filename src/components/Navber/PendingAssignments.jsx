@@ -16,7 +16,7 @@ const PendingAssignments = () => {
           <div key={i._id} className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body">
               <h2 className="card-title">Title: {i.title} </h2>
-              <p>Marks: {i.mark} </p>
+              <p>Total Marks: {i.mark} </p>
               <p>Name: {i.name} </p>
               <div className="card-actions justify-end">
                <Link className="btn" to={`/giveMarks/${i._id}`} >Give marks</Link>    

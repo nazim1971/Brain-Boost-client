@@ -94,9 +94,9 @@ const Assignments = () => {
       </div>
       <div className="grid grid-cols-3 gap-5">
         {filteredAssignments.map((i) => (
-          <div key={i._id} className="card w-96 bg-base-100 border shadow-xl">
+          <div key={i._id} className="card  bg-base-100 border shadow-xl">
             <figure>
-              <img src={i.assignmentThumbnail} alt="thumbnail" />
+              <img className="h-80 w-full" src={i.assignmentThumbnail} alt="thumbnail" />
             </figure>
             <div className="card-body">
               <h2 className="card-title">{i.assignmentTitle} </h2>

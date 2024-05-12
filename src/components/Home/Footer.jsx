@@ -24,7 +24,7 @@ const Footer = () => {
               </p>
               <div className="join my-4">
   <input className="input bg-base-200 DWT input-bordered join-item" placeholder="Email"/>
-  <button className="btn join-item rounded-r-full">Subscribe</button>
+  <button className="btn join-item rounded-r-full">Send</button>
 </div>
         <div className="text-xl flex gap-2 text-rose-500 my-2">
           <FaFacebook />

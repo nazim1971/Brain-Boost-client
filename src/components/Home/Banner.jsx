@@ -28,33 +28,29 @@ const Banner = () => {
       
       
         <SwiperSlide >
-         <div className="h-80 w-full rounded-2xl bg-no-repeat bg-cover " style={{backgroundImage: 'url(https://i.ibb.co/3WP6xKd/clay-2.jpg)'}}>
+         <div className="h-80 w-full rounded-2xl bg-no-repeat bg-cover " style={{backgroundImage: 'url(https://i.ibb.co/Fhrbb28/ass-1.jpg)'}}>
          <div className="text-white">
-            <h1>Graphic Deaign</h1>
             
          </div>
          </div>
         </SwiperSlide>
         <SwiperSlide >
-         <div className="h-80 w-full rounded-2xl bg-cover flex items-center justify-center" style={{backgroundImage: 'url(https://i.ibb.co/tLf6k6k/lion.jpg)'}}>
+         <div className="h-80 w-full rounded-2xl bg-cover flex items-center justify-center" style={{backgroundImage: 'url(https://i.ibb.co/qrJTSRv/ass-2.jpg)'}}>
          <div className="text-white">
-            <h1>Graphic Deaign</h1>
             
          </div>
          </div>
         </SwiperSlide>
         <SwiperSlide >
-         <div className="h-80 w-full rounded-2xl bg-cover flex items-center justify-center" style={{backgroundImage: 'url(https://i.ibb.co/FYfjC90/chocolate.jpg)'}}>
+         <div className="h-80 w-full rounded-2xl bg-cover flex items-center justify-center" style={{backgroundImage: 'url(https://i.ibb.co/cJXX4rh/ass-3.jpg)'}}>
          <div className="text-white">
-            <h1>Graphic Deaign</h1>
             
          </div>
          </div>
         </SwiperSlide>
         <SwiperSlide >
-         <div className="h-80 w-full rounded-2xl bg-cover flex items-center justify-center" style={{backgroundImage: 'url(https://i.ibb.co/48QTk4j/stone-wood.jpg)'}}>
+         <div className="h-80 w-full rounded-2xl bg-cover flex items-center justify-center" style={{backgroundImage: 'url(https://i.ibb.co/WHr79S1/ass-4.jpg)'}}>
          <div className="text-white">
-            <h1>Graphic Deaign</h1>
             
          </div>
          </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import Iframe from "react-iframe";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -12,7 +13,7 @@ const GiveMark = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     data.status = "Complete"
-    if(data.finalMark > mark ) {
+    if( parseInt(data.finalMark) > parseInt(mark) ) {
         return Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -20,7 +21,7 @@ const GiveMark = () => {
           });
     }
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/updatePending/${_id}`, data);
+      await axios.put(`${import.meta.env.VITE_API_URL}/updatePending/${_id}`, data, {withCredentials: true});
 
       console.log(data);
       reset();
@@ -39,19 +40,23 @@ const GiveMark = () => {
 
 
   return (
-    <div className="gird grid-cols-2">
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 lg:gap-5 my-20">
       <div>
-      <h1 className="p-5 w-1/2">Note: {assignmentNote} </h1>
-      {/* <h1> Doc/PDF: {assignmentDoc} </h1> */}
-      <iframe className="w-full md:w-[70%] mx-auto" src={assignmentDoc}  height="400"></iframe>
+      <div className="grid  grid-cols-1 gap-5">
+      <div className="p-5 shadow-xl border rounded-xl space-y-5">
+      <h1 className="text-2xl underline text-rose-500 font-semibold">Total Mark: {mark} </h1>
+      <h1 className=" "> {assignmentNote} </h1>
+      </div>
+       <iframe className="w-full border rounded-2xl mx-auto" src={assignmentDoc}  height="400"></iframe>
+      
 
-      <h1>Total Mark: {mark} </h1>
+      
+      </div>
       </div>
 
-      <div>
-        <section className="max-w-4xl p-6 mx-auto  rounded-md  bg-base-100">
-          <button>Fill the assignment</button>
-
+      <div className="">
+        <section className="border  p-6 mx-auto shadow-2xl rounded-2xl   bg-base-100">
+          <button className="font-semibold mb-3 underline ">Feedback</button>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <div>
@@ -69,7 +74,6 @@ const GiveMark = () => {
                 <input
                   id="feedback"
                   type="text"
-                  placeholder="Photo Url"
                   {...register("feedback", { required: true })}
                   className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />

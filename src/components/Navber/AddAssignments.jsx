@@ -47,9 +47,9 @@ const AddAssignments = () => {
   return (
     <div>
       <div>
-        <section className="max-w-4xl p-6 mx-auto  rounded-md shadow-md bg-base-100">
-          <h2 className="text-lg font-semibold t capitalize ">
-            Post a Assignment
+        <section className="max-w-4xl p-6 mx-auto my-20 border  rounded-md shadow-md bg-base-100">
+          <h2 className="text-lg font-semibold underline text-rose-500">
+            Add a Assignment
           </h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -78,14 +78,14 @@ const AddAssignments = () => {
                   id="assignmentMark"
                   type="number"
                   {...register("assignmentMark", { required: true })}
-                  className="block w-full px-4 py-2 mt-2  border border-rose-200 rounded-md   focus:border-rose-500 focus:ring-rose-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
               <div>
                 <label>Assignment thumbnail</label>
                 <input
                   id="assignmentThumbnail"
-                  type="text"
+                  type="url"
                   placeholder="Photo Url"
                   {...register("assignmentThumbnail", { required: true })}
                   className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -120,7 +120,7 @@ const AddAssignments = () => {
                 type="submit"
                 className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
               >
-                Save
+                post
               </button>
             </div>
           </form>

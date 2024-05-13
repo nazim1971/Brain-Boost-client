@@ -20,19 +20,17 @@ const AttemptAssign = () => {
 
     return (
         <div>
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 my-12 gap-5">
                 {
-                    done.map(i=> <div key={i._id} className="card w-96 bg-base-100 shadow-xl">
+                    done.map(i=> <div key={i._id} className="card border  bg-base-100 shadow-xl">
                     <div className="card-body">
-                      <h2 className="card-title"> Title {i.title} </h2>
+                      <h2 className="card-title text-rose-500"> Title {i.title} </h2>
                       <p>Total Mark: {i.mark} </p>
-                      <p>Status: {i.status} </p>
+                      <p>Status: <span className="text-rose-500">{i.status}</span> </p>
                       {
                         i.finalMark && <p>Your Mark {i.finalMark} </p>
                       }
-                      <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
-                      </div>
+                      
                     </div>
                   </div>)
                 }

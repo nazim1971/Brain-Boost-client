@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { MdOutlineDateRange } from "react-icons/md";
+import { SiLevelsdotfyi } from "react-icons/si";
+import { FaMarker } from "react-icons/fa";
 
 
 const ViewDetails = () => {
@@ -44,15 +47,18 @@ const ViewDetails = () => {
     };
 
     return (
-        <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
-  <figure><img src={assignmentThumbnail} alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Title: {assignmentTitle} </h2>
-    <p>Description:  {assignmentDescription} </p>
-    <p>Mark:  {assignmentMark} </p>
-    <p>level:  {level} </p>
-    <p>Date  {new Date(date).toLocaleDateString() } </p>
+        <div className="grid  my-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="lg:col-span-2 ">
+          <img className="h-96 w-full rounded-2xl" src={assignmentThumbnail} alt="thumbnail" />
+          </div>
+            
+  <div className=" shadow-2xl p-4 rounded-3xl space-y-4 border">
+    <h2 className=" mt-16 mb-5 text-2xl font-semibold"> {assignmentTitle} </h2>
+    <hr className="border-rose-500" />
+    <p className="mt-5">  {assignmentDescription} </p>
+    <p className="flex gap-3 items-center"><FaMarker className="text-rose-500 " />  {assignmentMark} </p>
+    <p className="flex gap-3 items-center"><SiLevelsdotfyi className="text-rose-500 " />  {level} </p>
+    <p className="flex gap-3 items-center"><MdOutlineDateRange className="text-rose-500 " />  {new Date(date).toLocaleDateString() } </p>
     <div className="card-actions justify-end">
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>Take assignment</button>
@@ -63,6 +69,18 @@ const ViewDetails = () => {
 
           <form  onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+
+            <div>
+                <label>Assignment Doc/Pdf</label>
+                <input
+                  id="assignmentDoc"
+                  type="url"
+                  placeholder="doc/pdf Link"
+                  {...register("assignmentDoc", { required: true })}
+                  className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                />
+              </div>
+
               <div>
                 <label>Assignment Note</label>
                 <input
@@ -72,30 +90,15 @@ const ViewDetails = () => {
                   className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
-
-
-              <div>
-                <label>Assignment Doc/Pdf</label>
-                <input
-                  id="assignmentDoc"
-                  type="text"
-                  placeholder="Photo Url"
-                  {...register("assignmentDoc", { required: true })}
-                  className="block w-full px-4 py-2 mt-2  border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
-                />
-              </div>
-
-
-
             </div>
 
-            <div className="flex justify-end mt-6">
+            <div className="flex gap-2 justify-end mt-6">
             <button onClick={closeModal} className="btn">cancel</button>
               <button
                 type="submit"
                 className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
               >
-                Save
+                Submit
               </button>
             </div>
           </form>
@@ -105,7 +108,7 @@ const ViewDetails = () => {
       
     </div>
   </div>
-</div>
+
         </div>
     );
 };

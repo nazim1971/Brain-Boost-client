@@ -29,11 +29,12 @@ const onSubmit = (data) => {
 
   // login user
   login(email, password)
-    .then(async() => {
-      toast.success("Login Successfully");
+    .then(async(data) => {
+       if(data){
+        toast.success("Login Successfully");
+       }
     //  jwt
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email }, { withCredentials: true });
-        console.log('token', res.data);
+       await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email }, { withCredentials: true })
 
 
       navigate(location?.state ? location.state : "/");
@@ -51,10 +52,8 @@ const onSubmit = (data) => {
     try {
         const data = await googleLogin();
         toast.success("Login Successfully");
-        console.log(data);
         
-        const res = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: data?.user?.email }, { withCredentials: true });
-        console.log('token', res.data);
+        await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: data?.user?.email }, { withCredentials: true })
         
         navigate(location?.state || "/");
     } catch (error) {
@@ -63,13 +62,13 @@ const onSubmit = (data) => {
     }
 };
 
-  if( user || loading) return
+
 
 
     return (
       <div className="my-20">
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg  lg:max-w-4xl">
-          <div className="hidden bg-cover lg:block lg:w-1/2" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80)'}} ></div>
+      <div className="flex w-full border max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg  lg:max-w-4xl">
+          <div className="hidden bg-cover lg:block lg:w-1/2" style={{backgroundImage: 'url(https://i.ibb.co/MfYyWhP/login.jpg)'}} ></div>
       
           <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
               <div className="flex justify-center mx-auto">
@@ -138,7 +137,7 @@ const onSubmit = (data) => {
               <div className="flex items-center justify-between mt-4">
                   <span className="w-1/5 border-b  md:w-1/4"></span>
       
-                  <Link to='/register' className="text-xs  uppercase  hover:underline">or sign up</Link>
+                  <Link to='/register' className="text-xs  uppercase  hover:underline text-rose-500">or sign up</Link>
       
                   <span className="w-1/5 border-b md:w-1/4"></span>
               </div>

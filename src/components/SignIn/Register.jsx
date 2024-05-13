@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Register = () => {
 
-  const { createUser,updateUserProfile } = useContext(AuthContext);
+  const {user, loading, createUser,updateUserProfile } = useContext(AuthContext);
 // show password
     const [pass, setPass] = useState(false);
     const location = useLocation();
@@ -76,7 +76,10 @@ createUser(email, password)
 });
 
 
+  }
 
+  if( user || loading) {
+    return navigate('/')
   }
 
   return (

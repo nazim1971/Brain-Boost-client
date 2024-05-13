@@ -52,9 +52,9 @@ const UpdateAssignment = () => {
     return (
         <div>
       <div>
-        <section className="max-w-4xl p-6 mx-auto  rounded-md shadow-md bg-base-100">
-          <h2 className="text-lg font-semibold t capitalize ">
-            Update a Assignment
+        <section className="max-w-4xl my-20 border p-6 mx-auto  rounded-md shadow-md bg-base-100">
+          <h2 className="text-lg font-semibold text-rose-500 underline ">
+            Update  Assignment
           </h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -130,7 +130,7 @@ const UpdateAssignment = () => {
                 type="submit"
                 className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
               >
-                Save
+                Update
               </button>
             </div>
           </form>

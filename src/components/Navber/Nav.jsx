@@ -64,7 +64,7 @@ const Nav = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar border-b bg-base-100">
         <div className="navbar-start">
           <Link to="/" className="btn btn-ghost text-xl">
             {" "}
@@ -143,7 +143,7 @@ const Nav = () => {
                 </ul>
               </div>
             ) : (
-              <div className="text-rose-500">
+              <div >
                 <div tabIndex={0} role="button">
                   <TiThMenu className="text-rose-500 text-2xl" />
                 </div>

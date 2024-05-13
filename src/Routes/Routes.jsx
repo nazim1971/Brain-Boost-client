@@ -14,6 +14,7 @@ import UpdateAssignment from "../components/Home/UpdateAssignment";
 import ViewDetails from "../components/Assignment Details/ViewDetails";
 import GiveMark from "../components/Assignment Details/GiveMark";
 import axios from "axios";
+import HowItWorks from "../components/Assignment Details/HowItWorks";
 
 const routes = createBrowserRouter([
     {
@@ -73,7 +74,7 @@ const routes = createBrowserRouter([
       {
         path: '/updateAssignment/:id',
         element: <UpdateAssignment/>,
-        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`)
+        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`, {credentials: 'include'})
       },
       {
         path: '/viewDetails/:id',
@@ -84,6 +85,10 @@ const routes = createBrowserRouter([
           console.error('Error fetching data:', error);
           throw error;
         })
+      },
+      {
+        path: '/howItWorks',
+        element: <HowItWorks/>
       }
       ]
     },

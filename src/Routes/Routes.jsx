@@ -73,7 +73,7 @@ const routes = createBrowserRouter([
        ,
       {
         path: '/updateAssignment/:id',
-        element: <UpdateAssignment/>,
+        element: <Private><UpdateAssignment/></Private> ,
         loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`, {credentials: 'include'})
       },
       {

@@ -13,7 +13,7 @@ const Login = () => {
 
 
    
-  const { login ,googleLogin, user , loading} = useContext(AuthContext);
+  const { login ,googleLogin} = useContext(AuthContext);
   
   // show password
   const [pass, setPass] = useState(false);

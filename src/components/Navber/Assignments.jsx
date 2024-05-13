@@ -7,6 +7,8 @@ import { FaFilter } from "react-icons/fa";
 import "animate.css";
 
 const Assignments = () => {
+
+
   const { user } = useContext(AuthContext);
   const [allAssignment, setAllAssignment] = useState([]);
   // filter
@@ -24,8 +26,7 @@ const Assignments = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
-
+  }; 
   // filter data
   const filteredAssignments =
     filterLevel === "All"
@@ -78,6 +79,8 @@ console.log('User Email:', user?.email);
     }
 
   };
+
+  
 
   return (
     <div className="mb-20 mt-10">
@@ -133,6 +136,8 @@ console.log('User Email:', user?.email);
             </div>
           </div>
         ))}
+
+
       </div>
     </div>
   );

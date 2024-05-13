@@ -65,7 +65,7 @@ const AddAssignments = () => {
               </div>
               <div>
                 <label>Assignment Description</label>
-                <input
+                <textarea
                   id="assignmentDescription"
                   type="text"
                   {...register("assignmentDescription", { required: true })}

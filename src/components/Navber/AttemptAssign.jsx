@@ -27,7 +27,10 @@ const AttemptAssign = () => {
                       <p>Total Mark: {i.mark} </p>
                       <p>Status: <span className="text-rose-500">{i.status}</span> </p>
                       {
-                        i.finalMark && <p>Your Mark {i.finalMark} </p>
+                        i.finalMark && <p>Your Marks: {i.finalMark} </p>
+                      }
+                      {
+                            i.feedback && <p>Feedback: {i.feedback} </p>
                       }
                       
                     </div>

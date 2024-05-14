@@ -29,12 +29,12 @@ const Home = () => {
               Get Started
             </Link>
 
-            <Link to='/howItWorks' className="flex gap-2 btn btn-ghost items-center">
+            <Link to='/howItWorks' className="flex gap-2 btn  btn-ghost items-center">
               {" "}
               <FaPlayCircle className="text-xl text-rose-500" />
               
               <Typewriter
-              words={['See how it works?']}
+              words={['how it works?']}
               loop={true}
               cursor
               cursorStyle='_'

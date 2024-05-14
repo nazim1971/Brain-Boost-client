@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import Iframe from "react-iframe";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -23,7 +22,6 @@ const GiveMark = () => {
     try {
       await axios.put(`${import.meta.env.VITE_API_URL}/updatePending/${_id}`, data, {withCredentials: true});
 
-      console.log(data);
       reset();
       Swal.fire({
         position: "center",

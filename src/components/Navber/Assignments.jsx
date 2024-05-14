@@ -37,8 +37,6 @@ const Assignments = () => {
 
   const handleDelete = async (id, email) => {
 
-    console.log('Email:', email);
-console.log('User Email:', user?.email);
     if(email === user?.email || user?.email === `${import.meta.env.VITE_MAIL}`){
       Swal.fire({
         title: "Are you sure?",
@@ -61,7 +59,6 @@ console.log('User Email:', user?.email);
                 icon: "success",
               });
             }
-            console.log(res.data.deletedCount);
             // After successful deletion, update data
             getData();
           }

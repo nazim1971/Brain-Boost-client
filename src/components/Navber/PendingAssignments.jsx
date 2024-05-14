@@ -6,7 +6,6 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const PendingAssignments = () => {
   const pendingData = useLoaderData();
-  console.log(pendingData);
 
   
 

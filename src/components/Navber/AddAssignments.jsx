@@ -29,7 +29,6 @@ const AddAssignments = () => {
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/allAssign`, data, {withCredentials: true});
 
-      console.log(data);
       reset();
       Swal.fire({
         position: "center",

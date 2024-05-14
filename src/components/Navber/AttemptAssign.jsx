@@ -15,7 +15,6 @@ const AttemptAssign = () => {
         setDone(data)
     }
 
-   console.log(done);
 
 
     return (

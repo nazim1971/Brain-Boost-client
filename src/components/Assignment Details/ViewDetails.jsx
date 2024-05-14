@@ -27,7 +27,6 @@ const ViewDetails = () => {
       try {
         await axios.post(`${import.meta.env.VITE_API_URL}/doneAssign`, data, {withCredentials: true});
   
-        console.log(data);
         reset();
         Swal.fire({
           position: "center",

@@ -49,22 +49,22 @@ const Home = () => {
       </div>
 
       <div className="my-20 ">
-      <div className="grid grid-cols-3 rounded-xl border-b  shadow w-full">
+      <div className="flex justify-between rounded-xl border-b  shadow w-full">
   
   <div className="stat place-items-center">
-    <div className="stat-title">Assignments</div>
+    <div className="stat-title ">Assignments</div>
     <div className="text-xl md:text-3xl lg:text-4xl font-semibold">31K</div>
     <div className="stat-desc">From 1st May </div>
   </div>
   
   <div className="stat place-items-center">
-    <div className="stat-title">Users</div>
+    <div className="stat-title ">Users</div>
     <div className="text-xl md:text-3xl lg:text-4xl font-semibold text-secondary">4,200</div>
     <div className="stat-desc text-secondary">↗︎ 40 (2%)</div>
   </div>
   
   <div className="stat place-items-center">
-    <div className="stat-title">New Registers</div>
+    <div className="stat-title ">New Registers</div>
     <div className="text-xl md:text-3xl lg:text-4xl font-semibold">1,200</div>
     <div className="stat-desc">↘︎ 90 (14%)</div>
   </div>

@@ -10,6 +10,7 @@ const PopulerDetails = () => {
       <div className="p-5 shadow-xl border rounded-xl space-y-5">
         <img className=" rounded-tl-xl rounded-br-xl h-80" src={populer.img} alt="" />
       <h1 className="text-2xl underline text-rose-500 font-semibold">Achieved Marks: {populer.max_marks} </h1>
+      <h1 className="text-lg font-semibold">{populer.title} </h1>
       <h1>Category: {populer.category} </h1>
       <h1 className="text-xl font-semibold">In Details:</h1>
       <h1 className="pl-3 "> {populer.description} </h1>

@@ -47,7 +47,7 @@ const routes = createBrowserRouter([
         path: '/pendingAssignments',
         element: <Private><PendingAssignments/></Private>,
         loader: ()=> axios.get(`${import.meta.env.VITE_API_URL}/pending`,{withCredentials: true})
-        .then(response => response.data)
+        .then(response => response.data )
         .catch(error => {
           console.error('Error fetching data:', error);
           throw error;

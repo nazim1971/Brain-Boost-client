@@ -7,8 +7,6 @@ import { Link, useLoaderData } from "react-router-dom";
 const PendingAssignments = () => {
   const pendingData = useLoaderData();
 
-  
-
   return (
     <div>
       <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 my-20 gap-5">

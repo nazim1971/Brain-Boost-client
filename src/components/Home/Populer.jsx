@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { BiSolidCategory } from "react-icons/bi";
 import { BsCalendarDateFill } from "react-icons/bs";
 import { FaMarker } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
@@ -93,7 +94,7 @@ const Populer = () => {
                       {i.max_marks}{" "}
                     </p>
                   </div>
-                  <button className="btn btn-ghost "> view Details </button>
+                  <Link to={`/populer/${i._id}`} className="btn btn-ghost "> view Details </Link>
                 </div>
               </div>
             </SwiperSlide>

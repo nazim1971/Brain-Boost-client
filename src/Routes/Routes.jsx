@@ -15,6 +15,7 @@ import ViewDetails from "../components/Assignment Details/ViewDetails";
 import GiveMark from "../components/Assignment Details/GiveMark";
 import axios from "axios";
 import HowItWorks from "../components/Assignment Details/HowItWorks";
+import PopulerDetails from "../components/Assignment Details/PopulerDetails";
 
 const routes = createBrowserRouter([
     {
@@ -89,6 +90,16 @@ const routes = createBrowserRouter([
       {
         path: '/howItWorks',
         element: <HowItWorks/>
+      },
+      {
+        path: '/populer/:id',
+        element: <Private><PopulerDetails/></Private>,
+        loader: ({params})=> axios.get(`${import.meta.env.VITE_API_URL}/populer/${params.id}`,{withCredentials: true})
+        .then(response => response.data)
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          throw error;
+        })
       }
       ]
     },

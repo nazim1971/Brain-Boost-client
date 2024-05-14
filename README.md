@@ -18,4 +18,4 @@ Welcome to **Brain-Boost**, the ultimate platform for students and learners to e
 
 - **User-Friendly Interface**: Enjoy a seamless experience with our intuitive and user-friendly interface, designed to make learning and interaction simple and enjoyable.
 
-Explore Brain-Boost and take your learning to the next level by actively engaging in assignments and contributing to a vibrant educational community!
+Explore Brain-Boost and take your learning to the next level by actively engaging in assignments and contributing to a vibrant educational community!!!

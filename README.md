@@ -6,7 +6,7 @@ Welcome to **Brain-Boost**, the ultimate platform for students and learners to e
 
 **Live Site URL**: [Brain-Boost](https://brainboost-e787c.web.app)
 
-## Features
+## Featuresssss
 
 - **Upload Assignments**: Easily upload your own assignments to share with the community. Showcase your knowledge and contribute to the learning of others.
 

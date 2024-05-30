@@ -1,6 +1,7 @@
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaPhoneAlt, FaYoutube } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdMailOpen } from "react-icons/io";
+import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 
@@ -27,17 +28,17 @@ const Footer = () => {
   <button className="btn join-item rounded-r-full">Send</button>
 </div>
         <div className="text-xl flex gap-2 text-rose-500 my-2">
-          <FaFacebook />
-          <FaInstagram />
-          <FaLinkedin />
-          <FaGithub />
-          <FaYoutube />
+          <Link target="blank" to='https://www.facebook.com/nazim1971'><FaFacebook /></Link>
+          <Link target="blank" to='https://www.linkedin.com/in/nazim1971'><FaLinkedin /></Link>
+          <Link target="blank" to='https://github.com/nazim1971'><FaGithub /></Link>
+          <Link target="blank" to='https://www.youtube.com'><FaYoutube /></Link>
+          
         </div>
         <div className="space-y-1">
           <h3 className="text-2xl font-bold">Contact Info :</h3>
           <p className="flex items-center gap-2">
             {" "}
-            <FaPhoneAlt className="text-rose-500" /> (888) 111-2222
+            <FaPhoneAlt className="text-rose-500" /> 01867748073
           </p>
           <p className="flex items-center gap-2">
             {" "}
@@ -45,7 +46,7 @@ const Footer = () => {
           </p>
           <p className="flex items-center gap-2">
             {" "}
-            <FaLocationDot className="text-rose-500" /> 23 Science Avenue, Labtown, USA
+            <FaLocationDot className="text-rose-500" /> Dhaka Uddan, Mohammadpur, Dhaka-1207
           </p>
         </div>
       </aside>

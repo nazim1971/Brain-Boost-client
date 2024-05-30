@@ -46,22 +46,12 @@ const routes = createBrowserRouter([
        {
         path: '/pendingAssignments',
         element: <Private><PendingAssignments/></Private>,
-        loader: ()=> axios.get(`${import.meta.env.VITE_API_URL}/pending`,{withCredentials: true})
-        .then(response => response.data )
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          throw error;
-        })
+        loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/pending`,{credentials: 'include'})
        },
        {
         path: '/giveMarks/:id',
         element: <Private><GiveMark/></Private> ,
-        loader: ({params})=> axios.get(`${import.meta.env.VITE_API_URL}/pending/${params.id}`,{withCredentials: true})
-        .then(response => response.data)
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          throw error;
-        })
+        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/pending/${params.id}`,{credentials: 'include'})
        },
        {
         path: '/editProfile',
@@ -75,17 +65,12 @@ const routes = createBrowserRouter([
       {
         path: '/updateAssignment/:id',
         element: <Private><UpdateAssignment/></Private> ,
-        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`, {credentials: 'include'})
+        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`,{credentials: 'include'})
       },
       {
         path: '/viewDetails/:id',
         element: <Private> <ViewDetails/> </Private>,
-        loader: ({params})=> axios.get(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`,{withCredentials: true})
-        .then(response => response.data)
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          throw error;
-        })
+        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/onePost/${params.id}`,{credentials: 'include'})
       },
       {
         path: '/howItWorks',
@@ -94,12 +79,7 @@ const routes = createBrowserRouter([
       {
         path: '/populer/:id',
         element: <Private><PopulerDetails/></Private>,
-        loader: ({params})=> axios.get(`${import.meta.env.VITE_API_URL}/populer/${params.id}`,{withCredentials: true})
-        .then(response => response.data)
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          throw error;
-        })
+        loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/populer/${params.id}`,{credentials: 'include'})
       }
       ]
     },

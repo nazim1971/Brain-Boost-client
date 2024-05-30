@@ -12,18 +12,18 @@ import { FaMarker } from "react-icons/fa";
 const ViewDetails = () => {
     const {user} = useContext(AuthContext)
     const viewDetails = useLoaderData();
-    const {_id,assignmentTitle,assignmentDescription,assignmentMark,assignmentThumbnail,level,date} = viewDetails
+    const {_id,assignmentTitle,assignmentDescription,assignmentMark,assignmentThumbnail,level,date , ownerEmail} = viewDetails
 
-
+    
     const navigate = useNavigate();
     const { register, handleSubmit, reset } = useForm();
+
     const onSubmit = async (data) => {
         data.title= assignmentTitle
         data.mark= assignmentMark
         data.name = user.displayName
         data.status = "pending"
       data.doneUserEmail = user?.email;
-  
       try {
         await axios.post(`${import.meta.env.VITE_API_URL}/doneAssign`, data, {withCredentials: true});
   
@@ -40,10 +40,22 @@ const ViewDetails = () => {
         console.log(err);
       }
     };
-
+    // close model
     const closeModal = () => {
         document.getElementById('my_modal_1').close();
     };
+
+    const handleTakeAssignmentClick = () => {
+      if (user.email === ownerEmail) {
+          Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "You can't take your own assignment!",
+          });
+      } else {
+          document.getElementById('my_modal_1').showModal();
+      }
+  };
 
     return (
         <div className="grid  my-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -60,8 +72,8 @@ const ViewDetails = () => {
     <p className="flex gap-3 items-center"><MdOutlineDateRange className="text-rose-500 " />  {new Date(date).toLocaleDateString() } </p>
     <div className="card-actions justify-end">
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>Take assignment</button>
-<dialog id="my_modal_1" className="modal">
+<button className="btn" onClick={handleTakeAssignmentClick}>Take assignment</button>
+<dialog  id="my_modal_1" className="modal z-0">
   <div className="modal-box">
   <section className="max-w-4xl p-6 mx-auto  rounded-md  bg-base-100">
           <button >Fill the assignment</button>

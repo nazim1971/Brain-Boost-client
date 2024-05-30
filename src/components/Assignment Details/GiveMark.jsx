@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const GiveMark = () => {
   const submitedAssign = useLoaderData();
-  const { assignmentNote, assignmentDoc, _id ,mark} = submitedAssign;
+  const { assignmentNote, assignmentDoc, _id ,mark } = submitedAssign;
 
 
   const navigate = useNavigate();

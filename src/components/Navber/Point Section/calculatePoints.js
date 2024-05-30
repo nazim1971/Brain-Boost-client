@@ -2,7 +2,7 @@ const calculatePoints = (objects) => {
     let totalPoints = 0;
   
     objects.forEach(obj => {
-      const percentage = (obj.mark / obj.finalMark
+      const percentage = (obj.finalMark / obj.mark
     ) * 100;
   
       if (percentage === 100) {

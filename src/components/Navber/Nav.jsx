@@ -3,6 +3,9 @@ import "animate.css";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { TiThMenu } from "react-icons/ti";
+import { IoDiamond } from "react-icons/io5";
+import axios from "axios";
+import calculatePoints from "./Point Section/calculatePoints";
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -61,6 +64,27 @@ const Nav = () => {
       setTheme("light");
     }
   };
+
+  //Point section
+  const [assignments, setAssignments] = useState([]);
+
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      try {
+        if (user && user.email) {
+          const response = await axios(`${import.meta.env.VITE_API_URL}/getCompletedAssignments/${user.email}`, { withCredentials: true });
+          setAssignments(response.data);
+          console.log(response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching assignments:", error);
+      }
+    };
+  
+    fetchAssignments();
+  }, [user]);
+
+  const totalPoints = calculatePoints(assignments);
 
   return (
     <div>
@@ -131,6 +155,9 @@ const Nav = () => {
                         className="toggle theme-controller"
                       />
                     </label>
+                  </li>
+                  <li>
+                    <a href=""><IoDiamond className="text-2xl text-sky-500" />  <span className="text-sky-500 font-bold "> {totalPoints} </span> </a>
                   </li>
                   <li>
                     <NavLink to="/editProfile">Profile</NavLink>
